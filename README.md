@@ -2,7 +2,7 @@
 
 For those unfamiliar: A debugger, in programming, is a program that "attaches" to another running process and allows you to pause it in place, allowing you to observe the state of all variables accessible at that point, step through the code line-by-line, and even run arbitrary code to test things with few limitations. Such a tool is vital for fixing obscure bugs or errors in complex logic, and being able to use one will save you a substantial amount of headache.
 
-The folder named `DebugBinaries` in this Github repository contains everything necessary to convert Rain World into a Unity development build, which you are able to attach a managed .NET debugger to once the game has been launched.
+The folder named `DebugBinaries` in this GitHub repository contains everything necessary to convert Rain World into a Unity development build, which you are able to attach a managed .NET debugger to once the game has been launched.
 
 It should be noted, these binaries are specifically for the Windows/Steam release of the game updated to the most recent patch at the time of writing (March 13th, 2026). Outside major updates to the game, this should probably work on future patches. I am unsure if this would work for playing the game through Proton on Linux, but I strongly suspect the answer is 'no'.
 
@@ -36,6 +36,8 @@ Additionally, the game will permit a debugger to attach to it. Both JetBrains Ri
 Once the debugger is attached, you will be able to use it to debug your code. Note that you will have to build your mod with debugging symbols, in particular a `.pdb` file. How you do this depends on your IDE, but shouldn't be hard to figure out. Search `<your ide> add pdb to build` and you should find it. Ensure the `.pdb` is in the same folder as your mod's `.dll`.
 
 If you want to debug initialization code that runs right when the game starts, you can go into `boot.config` and add the line `wait-for-managed-debugger=1` to the end of the file. This will cause the game to have a popup on launch telling you to attach a debugger, and to pause while this popup is waiting. You can either attach your debugger or close it to continue.
+
+Note that, in development builds like this, most runtime optimizations are disabled, which may significantly reduce the game's performance in some situations. Additionally, while rare, it is possible for certain obscure bugs to appear in release builds, only to disappear in release builds. Mostly this is due to things like method inlining (make sure you don't apply hooks to virtual base methods with empty bodies!). 
 
 ## Where do These Files Come From
 
