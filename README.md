@@ -37,7 +37,7 @@ Once the debugger is attached, you will be able to use it to debug your code. No
 
 If you want to debug initialization code that runs right when the game starts, you can go into `boot.config` and add the line `wait-for-managed-debugger=1` to the end of the file. This will cause the game to have a popup on launch telling you to attach a debugger, and to pause while this popup is waiting. You can either attach your debugger or close it to continue.
 
-Note that, in development builds like this, most runtime optimizations are disabled, which may significantly reduce the game's performance in some situations. Additionally, while rare, it is possible for certain obscure bugs to appear in release builds, only to disappear in release builds. Mostly this is due to things like method inlining (make sure you don't apply hooks to virtual base methods with empty bodies!). 
+Note that, in development builds like this, most runtime optimizations are disabled, which may significantly reduce the game's performance in some situations. Additionally, while rare, it is possible for certain obscure bugs to appear in release builds, only to disappear in debug builds. Mostly this is due to things like method inlining (make sure you don't apply hooks to virtual base methods with empty bodies!). 
 
 ## Where do These Files Come From
 
